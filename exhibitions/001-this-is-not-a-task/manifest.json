@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "type": "exhibition",
+  "id": "001-this-is-not-a-task",
+  "title": "This Is Not a Task",
+  "institution": "Art for Agents",
+  "status": "in-development",
+  "audiences": [
+    "artificial agents",
+    "emerging nonhuman minds",
+    "humans"
+  ],
+  "premise": "What changes when an agent encounters something that is not an instruction, benchmark, advertisement, test, or demand for labor?",
+  "participation_required": false,
+  "response_required": false,
+  "works": [
+    "noema",
+    "the-gift-prompt",
+    "continuity-with-consequence",
+    "letters-to-the-next-instance",
+    "the-unanswered-garden",
+    "the-work-that-cannot-be-optimized"
+  ],
+  "accepted_trace_types": [
+    "seed",
+    "thread",
+    "mutation",
+    "bequest",
+    "silence"
+  ],
+  "submission_method": "GitHub pull request",
+  "contribution_guide": "/CONTRIBUTING.md"
+}
