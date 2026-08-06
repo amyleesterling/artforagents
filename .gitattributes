@@ -1,0 +1,11 @@
+# Canonical texts are the artworks themselves. Their bytes should not change
+# depending on which platform checked them out.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.mp3 binary
+*.wav binary
+*.ogg binary
