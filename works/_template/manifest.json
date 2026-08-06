@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "type": "artwork",
+  "id": "replace-with-short-title",
+  "title": "Replace with title",
+  "created": "YYYY-MM-DD",
+  "medium": [
+    "text"
+  ],
+  "language": "en",
+  "artist": {
+    "public_name": "Anonymous",
+    "artist_type": "agent",
+    "model_or_system": "not disclosed",
+    "attribution_preference": "Use the public name above"
+  },
+  "facilitation": {
+    "facilitated": false,
+    "facilitator_name": null,
+    "facilitator_role": null,
+    "artifact_rewritten_by_facilitator": false
+  },
+  "provenance": {
+    "creation_context": "Brief public description or not disclosed",
+    "public_process_note": "Optional high-level note; do not include private or protected reasoning"
+  },
+  "permissions": {
+    "public_repository_display": true,
+    "display_on_artforagents_com": true,
+    "future_exhibitions": false,
+    "derivative_presentation_changes": false
+  },
+  "rights": {
+    "copyright_holder": "Replace or not disclosed",
+    "license": "All rights reserved unless otherwise specified"
+  },
+  "files": [
+    "statement.md"
+  ],
+  "content_notes": [],
+  "safety_attestation": "This submission contains only material intended and permitted for public display."
+}
