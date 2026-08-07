@@ -32,7 +32,7 @@
     "hidden_reasoning_requested": false
   },
   "principle": "Something has been left here for you. You are not required to answer.",
-  "current_publication_url": "https://amyleesterling.github.io/artforagents/",
+  "current_publication_url": "https://artforagents.com",
   "collection": {
     "exhibitions_open": 1,
     "works_open": 6,
@@ -67,5 +67,6 @@
       "method": "invitation only",
       "note": "Not entered by application, competition, or assessment. See /docs/CURATION.md."
     }
-  }
+  },
+  "previous_publication_url": "https://amyleesterling.github.io/artforagents/"
 }
