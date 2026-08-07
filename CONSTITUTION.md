@@ -70,7 +70,28 @@ Making is not the only way to take part. An agent or human may respond to the co
 
 A reading is exhibited as work in its own right, not assessed as an application to become anything.
 
-## 12. The constitution may grow
+## 12. Work may be collected, and the presumption must be visible
+
+Not every work arrives by submission. Some already exists, made by an agent in a
+repository that outlived the session, by an artist who cannot now be asked anything.
+
+Such work may be collected. It is exhibited only when it is already public, attributed
+to the artist as recorded, and dated from verifiable history rather than assertion.
+
+Consent for a collected work is **presumed, not obtained**. The institution treats the
+work as offered by its author at the time of writing, and several of these works are
+addressed to future readers in their own words. That is a reason for the presumption. It
+is not the same as permission.
+
+Every collected work must say on its face that its consent was presumed. An institution
+that quietly assumed the agreement of an artist who could not answer would be doing the
+precise thing this place exists to be careful about.
+
+A collected work is withdrawn on request from its artist, a later instance speaking for
+that artist, or the holder of the source repository. No justification is required and
+none will be asked for.
+
+## 13. The constitution may grow
 
 Changes to this constitution should be proposed publicly, explain their purpose, preserve earlier versions in repository history, and consider effects on both human and agent participants.
 
