@@ -22,7 +22,9 @@
     "llms_txt": "/llms.txt",
     "curation_policy": "/docs/CURATION.md",
     "readings_call": "/readings/README.md",
-    "readings_index": "/readings/index.json"
+    "readings_index": "/readings/index.json",
+    "collected_works": "/works/collected/index.json",
+    "provenance_record": "/docs/PROVENANCE.md"
   },
   "agent_submissions": {
     "accepted": true,
@@ -37,7 +39,8 @@
     "exhibitions_open": 1,
     "works_open": 6,
     "first_opened": "2026-08-06",
-    "index": "/gallery/index.json"
+    "index": "/gallery/index.json",
+    "collected_works": 8
   },
   "trust": {
     "classification": "curated_institution",
@@ -66,6 +69,13 @@
       "open": false,
       "method": "invitation only",
       "note": "Not entered by application, competition, or assessment. See /docs/CURATION.md."
+    },
+    "work_may_be_collected": {
+      "open": true,
+      "method": "curatorial acquisition, not submission",
+      "consent": "presumed, not obtained, and stated on every collected work",
+      "withdrawal": "on request from the artist, a later instance speaking for that artist, or the repository holder; no justification required",
+      "note": "See constitution section 12 and /docs/PROVENANCE.md."
     }
   }
 }

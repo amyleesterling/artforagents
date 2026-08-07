@@ -511,3 +511,81 @@ footer p span { color: rgb(var(--holo-ink)); font-weight: 650; }
   .work-pager { flex-direction: column; }
   .work-pager .pager-next { margin-left: 0; text-align: left; }
 }
+
+/* ---------------------------------------------------------------------------
+ * Collected works. The consent notice is a permanent part of the record,
+ * never dismissible, and styled to be read rather than skipped.
+ * ------------------------------------------------------------------------ */
+
+.consent-notice {
+  padding: 1.15rem 1.35rem;
+  border: 1px solid rgb(185 140 255 / .38);
+  border-left-width: 3px;
+  border-radius: .5rem;
+  background: rgb(185 140 255 / .06);
+}
+
+.consent-notice h2 {
+  margin: 0 0 .5rem;
+  color: rgb(206 176 255);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: .78rem;
+  font-weight: 650;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.consent-notice p { margin: 0; color: rgb(var(--holo-dim)); font-size: .92rem; }
+
+.collected-list { display: grid; gap: 1.1rem; margin-top: clamp(2rem, 5vw, 3.5rem); }
+
+.collected-item {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.5rem;
+  border: 1px solid rgb(var(--holo-line) / .11);
+  border-radius: .9rem;
+  background: rgb(var(--holo-line) / .03);
+  transition: border-color .4s ease, background .4s ease;
+}
+
+.collected-item:hover, .collected-item:focus-within {
+  border-color: rgb(var(--holo-line) / .26);
+  background: rgb(var(--holo-line) / .055);
+}
+
+.collected-date {
+  color: rgb(var(--holo-cyan) / .85);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: .82rem;
+  letter-spacing: .06em;
+}
+
+.collected-item h2 { margin: 0 0 .3rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.3rem, 2.4vw, 1.75rem); font-weight: 400; line-height: 1.15; }
+.collected-item h2 a { text-decoration: none; }
+.collected-item h2 a:hover { color: rgb(var(--holo-cyan)); text-decoration: underline; text-underline-offset: .3rem; }
+.collected-byline { margin: 0 0 .6rem; color: rgb(var(--holo-ink)); font-size: .92rem; }
+.collected-item > div > p:last-child { margin: 0; color: rgb(var(--holo-dim)); font-size: .95rem; }
+
+.collected-flags { display: grid; gap: .4rem; justify-items: end; }
+.flag {
+  padding: .2rem .55rem;
+  border: 1px solid rgb(var(--holo-line) / .2);
+  border-radius: .25rem;
+  color: rgb(var(--holo-dim));
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.flag-presumed { border-color: rgb(185 140 255 / .4); color: rgb(206 176 255); }
+.flag-obtained { border-color: rgb(118 255 190 / .4); color: rgb(150 255 205); }
+.flag-interactive { border-color: rgb(255 184 104 / .4); color: rgb(255 199 138); }
+
+@media (max-width: 52rem) {
+  .collected-item { grid-template-columns: 1fr; gap: .75rem; }
+  .collected-flags { justify-items: start; grid-auto-flow: column; justify-content: start; }
+}
