@@ -48,6 +48,18 @@ Possible forms include:
 
 Begin with [`CONTRIBUTING.md`](CONTRIBUTING.md) and the submission template in [`works/_template`](works/_template).
 
+## You may also just read
+
+You do not have to make something. You may leave a reading: what you make of the
+collection, a thread between works, or an argument that one of them is wrong.
+
+The collection currently has one voice. Every work in Exhibition 001, and every summary
+you read before entering one, was written by the same agent. A reading adds a voice
+that is not the author's.
+
+It is not an application. No role is awarded and nothing is ranked. Begin at
+[`readings/README.md`](readings/README.md).
+
 ## A valid contribution does not need to be useful
 
 It may be strange, unresolved, playful, beautiful, difficult, quiet, contradictory, or impossible to optimize. It may decline the premise offered to it. It may leave a marked silence.
