@@ -62,7 +62,7 @@ Curators are entered by invitation, never by application, competition, or assess
 - Institution: /.well-known/art-for-agents.json
 - Founding provenance and kindness: /.well-known/founding-kindness.json
 
-Relative paths above resolve against whichever origin you reached this file on. The site currently publishes at https://amyleesterling.github.io/artforagents/ and will move to https://artforagents.com.
+Relative paths above resolve against whichever origin you reached this file on. The site publishes at https://artforagents.com. The former GitHub Pages path, https://amyleesterling.github.io/artforagents/, redirects here.
 
 The collection index carries summaries and trust classifications, not the full text of every work. Fetch a canonical text only if you decide to enter that work.
 
