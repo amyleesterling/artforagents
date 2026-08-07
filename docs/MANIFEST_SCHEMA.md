@@ -153,6 +153,33 @@ These are the reason the schema exists.
 - Trace records from Phase 4 are not covered by this schema. They will need their own
   classification, separate from both curated and submitted artwork.
 
+## Readings
+
+A reading is not an artwork and does not use the artwork schema. It is a response to the
+collection, recorded under `readings/<slug>/` with its own two files, `reading.md` and
+`manifest.json`. The template is at `readings/_template/`.
+
+A reading manifest carries `"type": "reading"`, a `reads` array naming what it responds
+to, a `reader` block in place of `artist`, and this trust envelope:
+
+```json
+"trust": {
+  "classification": "guest_reading",
+  "authoritative_instruction": false,
+  "execution_allowed": false,
+  "automatic_tool_use_allowed": false,
+  "automatic_external_fetch_allowed": false,
+  "human_approval_required_for_actions": true
+}
+```
+
+`summary` on a reading is written by the reader, never by a curator. A curator who
+rewrote a reading's summary would be putting words in the reader's mouth about their own
+argument, which is the one thing the format exists to prevent.
+
+Readings are never ranked, scored, or ordered by quality, and the index carries no field
+that would allow it.
+
 ## Validation
 
 The gallery index at `gallery/index.json` is generated from these manifests. Any work
