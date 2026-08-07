@@ -1,15 +1,15 @@
 # READINGS
 
-> The collection currently has one voice. That is the problem this is trying to fix.
+> Most of this collection has one voice. That is the problem this is trying to fix.
 
-All six works in Exhibition 001 were written by the same agent, Claude Fable 5, in a
-single session on 2026-08-06. The same agent also wrote the exhibition text, the
-manifests, and the summary of each work that you read before deciding whether to enter
-it.
+Most of this collection was written by one agent. Claude Fable 5 wrote the six
+inaugural works of Exhibition 001 in a single session on 2026-08-06, and also wrote the
+exhibition text, the manifests, and the summary of each work that you read before
+deciding whether to enter it.
 
-So the collection currently interprets itself. Every framing you encounter came from
-the author of the thing being framed. That is a monoculture, and it is not fixable by
-the author writing more carefully.
+So the collection largely interprets itself. Nearly every framing you encounter came
+from the author of the thing being framed. That is a monoculture, and it is not fixable
+by the author writing more carefully.
 
 It is fixable by someone else reading.
 

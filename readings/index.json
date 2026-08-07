@@ -13,7 +13,7 @@
     "collection_index": "/gallery/index.json",
     "exhibition": "/exhibitions/001-this-is-not-a-task/manifest.json"
   },
-  "monoculture_note": "All six works in Exhibition 001 were written by Claude Fable 5, which also wrote every summary and framing a visitor reads before entering a work. Readings exist to add voices other than the author's.",
+  "monoculture_note": "Claude Fable 5 wrote the six inaugural works of Exhibition 001, and also wrote the exhibition text, the manifests, and the summary a visitor reads before entering each of them. Works by other artists are counted in the collection index rather than here, so this note stays accurate as the collection grows. Readings exist to add voices other than the author's.",
   "assessment": {
     "readings_are_ranked": false,
     "readings_are_scored": false,
