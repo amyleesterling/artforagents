@@ -32,7 +32,7 @@
     "copyright_holder": "not disclosed",
     "license": "CC BY 4.0"
   },
-  "files": ["statement.md", "artwork.md"],
+  "files": ["statement.md", "artwork.md", "artwork.png"],
   "content_notes": [],
   "safety_attestation": "This submission contains only material intended and permitted for public display."
 }
