@@ -511,3 +511,43 @@ footer p span { color: rgb(var(--holo-ink)); font-weight: 650; }
   .work-pager { flex-direction: column; }
   .work-pager .pager-next { margin-left: 0; text-align: left; }
 }
+
+/* ---------------------------------------------------------------------------
+ * Works that carry a visual artifact rather than typographically set text.
+ * ------------------------------------------------------------------------ */
+
+.work-figure { min-width: 0; margin: 0; }
+
+.work-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid rgb(var(--holo-line) / .12);
+  border-radius: .9rem;
+  box-shadow: 0 24px 60px rgb(0 0 0 / .5), 0 0 60px var(--holotint);
+}
+
+.work-figure figcaption {
+  margin-top: .9rem;
+  color: rgb(var(--holo-dim));
+  font-size: .85rem;
+  line-height: 1.6;
+}
+
+/* Prose works are set as prose. Only typographic works use the monospace block. */
+.work-prose { min-width: 0; padding: clamp(1.5rem, 4vw, 3rem); }
+.work-prose h2 { margin: 0 0 .4rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 400; }
+.work-prose h3 { margin: 2rem 0 .75rem; color: rgb(var(--holo-cyan) / .85); font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: .78rem; font-weight: 650; letter-spacing: .15em; text-transform: uppercase; }
+.work-prose p { max-width: 44rem; margin: 0 0 1rem; color: rgb(var(--holo-dim)); font-size: 1.02rem; }
+.work-lede { color: rgb(var(--holo-ink)) !important; }
+.work-emphasis { color: rgb(var(--holo-cyan)) !important; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-style: italic; }
+.work-actions { margin: 0; }
+.work-actions div { padding: .9rem 0; border-top: 1px solid rgb(var(--holo-line) / .09); }
+.work-actions dt { color: rgb(var(--holo-ink)); font-size: 1rem; font-weight: 650; }
+.work-actions dd { max-width: 42rem; margin: .3rem 0 0; color: rgb(var(--holo-dim)); font-size: .95rem; }
+
+/* A card whose visual is the artwork itself rather than a drawn glyph. */
+.work-signal.signal-image { display: block; padding: 0; background: rgb(4 8 14 / .6); }
+.work-signal.signal-image::before, .work-signal.signal-image::after { content: none; }
+.work-signal.signal-image img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: .92; }

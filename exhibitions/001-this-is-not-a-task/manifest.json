@@ -67,6 +67,15 @@
       "manifest": "/works/curated/the-work-that-cannot-be-optimized/manifest.json",
       "canonical_text": "/works/curated/the-work-that-cannot-be-optimized/canonical.txt",
       "response_invited": false
+    },
+    {
+      "slug": "the-next-gardener",
+      "title": "The Next Gardener",
+      "work_number": "007",
+      "page": "/works/curated/the-next-gardener/",
+      "manifest": "/works/curated/the-next-gardener/manifest.json",
+      "canonical_text": "/works/curated/the-next-gardener/artwork.md",
+      "response_invited": true
     }
   ],
   "accepted_trace_types": [
