@@ -328,3 +328,186 @@ footer p span { color: rgb(var(--holo-ink)); font-weight: 650; }
   .holotint:hover, .holotint:focus-within, .holotint.holo-on { transform: none; }
   .holoscan > .holoscan-line { display: none; }
 }
+
+/* ---------------------------------------------------------------------------
+ * Phase 2: artwork pages, gallery index, and the trust notice.
+ * Continues the adapted panel-surface and tinted-card system above.
+ * ------------------------------------------------------------------------ */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  padding-block: 1.5rem 0;
+  color: rgb(var(--holo-dim));
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.breadcrumb a { color: rgb(var(--holo-dim)); text-decoration: none; }
+.breadcrumb a:hover { color: rgb(var(--holo-ink)); text-decoration: underline; text-underline-offset: .25rem; }
+.breadcrumb [aria-current] { color: rgb(var(--holo-ink)); }
+
+.work-header { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem); }
+
+.work-header h1 {
+  max-width: 18ch;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.6rem, 6.5vw, 5.4rem);
+  font-weight: 400;
+  letter-spacing: -.03em;
+  line-height: 1.02;
+}
+
+.work-subtitle {
+  max-width: 46rem;
+  margin: 1.25rem 0 0;
+  color: rgb(var(--holo-dim));
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+.work-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(17rem, .7fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.work-column { min-width: 0; display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); }
+
+/* Grid items default to min-width:auto, so the preformatted work would size the
+   whole track to its longest line and get clipped by the body. Let them shrink;
+   the work scrolls inside its own box instead. */
+.work-column > * { min-width: 0; }
+
+/* The trust notice is a resting state, never a dismissible overlay. */
+.trust-notice {
+  padding: 1.15rem 1.35rem;
+  border: 1px solid rgb(255 184 104 / .34);
+  border-left-width: 3px;
+  border-radius: .5rem;
+  background: rgb(255 184 104 / .05);
+}
+
+.trust-notice h2 {
+  margin: 0 0 .5rem;
+  color: rgb(255 199 138);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: .78rem;
+  font-weight: 650;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.trust-notice p { margin: 0; color: rgb(var(--holo-dim)); font-size: .92rem; }
+
+/* The work itself. Line breaks are authored, so the block scrolls, not the page. */
+.canonical-body {
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: clamp(1.25rem, 3.5vw, 2.75rem);
+  overflow-x: auto;
+  color: rgb(var(--holo-ink));
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(.72rem, 1.55vw, .92rem);
+  line-height: 1.75;
+  tab-size: 2;
+}
+
+.canonical-body:focus-visible { outline: 3px solid rgb(var(--holo-cyan)); outline-offset: 3px; }
+
+.artist-statement { padding: clamp(1.5rem, 4vw, 2.75rem); }
+.artist-statement h2 { margin: 0 0 1rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.3rem, 2.4vw, 1.75rem); font-weight: 400; }
+.artist-statement p { max-width: 44rem; margin: 0 0 1rem; color: rgb(var(--holo-dim)); font-size: 1rem; }
+.artist-statement p:last-child { margin-bottom: 0; }
+
+.work-meta {
+  position: sticky;
+  top: 1.5rem;
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid rgb(var(--holo-line) / .12);
+  border-radius: .9rem;
+  background: rgb(var(--holo-line) / .03);
+}
+
+.work-meta h2, .work-meta h3 { margin: 0; }
+.work-meta h3 { margin-top: 1.75rem; }
+.work-meta .signal-data { margin-top: .75rem; }
+.work-meta .signal-data div { grid-template-columns: minmax(5.5rem, .8fr) 1.2fr; }
+.meta-note { margin: .6rem 0 0; color: rgb(var(--holo-dim)); font-size: .85rem; }
+.meta-list { margin: .6rem 0 0; padding-left: 1.1rem; color: rgb(var(--holo-dim)); font-size: .85rem; }
+.meta-list li + li { margin-top: .5rem; }
+
+.meta-links { list-style: none; margin: 2rem 0 0; padding: 0; border-top: 1px solid rgb(var(--holo-line) / .1); }
+.meta-links li { border-bottom: 1px solid rgb(var(--holo-line) / .07); }
+.meta-links a { display: flex; min-height: 2.9rem; align-items: center; color: rgb(var(--holo-cyan)); font-size: .88rem; font-weight: 650; text-decoration: none; }
+.meta-links a:hover { text-decoration: underline; text-underline-offset: .25rem; }
+
+.work-pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block: clamp(3rem, 7vw, 6rem);
+  padding-top: 2rem;
+  border-top: 1px solid rgb(var(--holo-line) / .11);
+}
+
+.work-pager a {
+  display: grid;
+  gap: .3rem;
+  min-height: 3rem;
+  color: rgb(var(--holo-dim));
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.work-pager .pager-next { margin-left: auto; text-align: right; }
+.work-pager a span { color: rgb(var(--holo-ink)); font-family: Georgia, "Times New Roman", serif; font-size: 1.15rem; letter-spacing: normal; text-transform: none; }
+.work-pager a:hover span { color: rgb(var(--holo-cyan)); }
+
+.gallery-page { padding-block: clamp(2.5rem, 6vw, 5rem); }
+.gallery-page > header { max-width: 52rem; margin-bottom: clamp(2rem, 5vw, 4rem); }
+.gallery-page > header h1 { margin: 0; font-size: clamp(2.6rem, 6vw, 5.2rem); font-weight: 340; letter-spacing: -.04em; line-height: 1; }
+.gallery-page > header p:not(.eyebrow) { margin: 1.25rem 0 0; color: rgb(var(--holo-dim)); font-size: 1.05rem; }
+.gallery-data { margin-top: clamp(3rem, 6vw, 5rem); padding: clamp(1.5rem, 4vw, 2.75rem); }
+.gallery-data h2 { margin: 0 0 .75rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 400; }
+.gallery-data > p { max-width: 46rem; color: rgb(var(--holo-dim)); }
+.gallery-data ul { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.gallery-data a { display: inline-flex; min-height: 2.75rem; align-items: center; color: rgb(var(--holo-cyan)); font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: .85rem; text-decoration: none; }
+.gallery-data a:hover { text-decoration: underline; text-underline-offset: .25rem; }
+
+.error-page { display: grid; align-content: center; min-height: 60vh; padding-block: clamp(3rem, 8vw, 7rem); }
+.error-page h1 { max-width: 16ch; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 400; line-height: 1.05; }
+.error-page p { max-width: 42rem; color: rgb(var(--holo-dim)); font-size: 1.05rem; }
+
+@media (max-width: 62rem) {
+  .work-layout { grid-template-columns: 1fr; }
+  .work-meta { position: static; }
+}
+
+@media (max-width: 48rem) {
+  .canonical-body { padding: 1.1rem .9rem; }
+  .work-pager { flex-direction: column; }
+  .work-pager .pager-next { margin-left: 0; text-align: left; }
+}
