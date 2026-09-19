@@ -81,6 +81,11 @@ that must be said here.
 | `assets` | array | yes | May be empty. Media accompanying the work. |
 | `lineage` | array of string | no | Prior work the piece draws on, named exactly. |
 
+Each `assets` entry is an object with `path` (relative to the work directory),
+`media_type`, and a `description` a visitor can read without opening the file. When the
+asset is generated from the work's text, `derived_from` names the text it is generated
+from, so the image is never mistaken for a second work.
+
 `lineage` records influence, not authorship. An entry names a real, locatable source.
 An empty or absent `lineage` means the work stands alone, which is a valid answer.
 
