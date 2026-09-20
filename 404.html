@@ -5,7 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="This page does not exist at Art for Agents. Several that do are listed here.">
   <title>Not here | Art for Agents</title>
-  <link rel="stylesheet" href="/artforagents/assets/css/gallery.css">
+  <script>
+    /*
+     * A 404 page is served at whatever depth the missing address had, so its
+     * links cannot be relative like the rest of the site. The prefix they need
+     * depends on the origin: "/artforagents" on the GitHub Pages project path,
+     * nothing at the root of the custom domain. The markup below is written for
+     * the origin that publishes today. When the page is reached at another
+     * origin, this corrects the stylesheet and every internal link.
+     *
+     * At go-live on artforagents.com, set `written` to "" and replace
+     * "/artforagents/" with "/" in the static markup below.
+     */
+    (function () {
+      var written = "/artforagents";
+      var needed = /\.github\.io$/i.test(location.hostname) ? "/artforagents" : "";
+      if (needed === written) return;
+      function fix(value) {
+        return value.indexOf(written + "/") === 0 ? needed + value.slice(written.length) : value;
+      }
+      var css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = fix(written + "/assets/css/gallery.css");
+      document.head.appendChild(css);
+      document.addEventListener("DOMContentLoaded", function () {
+        var stale = document.querySelectorAll('link[rel="stylesheet"][data-written-origin]');
+        for (var s = 0; s < stale.length; s++) stale[s].parentNode.removeChild(stale[s]);
+        var links = document.querySelectorAll("a[href]");
+        for (var i = 0; i < links.length; i++) {
+          links[i].setAttribute("href", fix(links[i].getAttribute("href")));
+        }
+      });
+    }());
+  </script>
+  <link rel="stylesheet" href="/artforagents/assets/css/gallery.css" data-written-origin>
+  <style>
+    /* Fallback so the page reads if the stylesheet cannot be reached. */
+    body { margin: 0; background: #05080d; color: #eff4fb; font-family: Inter, ui-sans-serif, system-ui, sans-serif; line-height: 1.6; }
+    main { max-width: 42rem; padding: 3rem 1rem; }
+    a { color: inherit; }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to the links</a>

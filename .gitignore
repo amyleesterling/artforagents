@@ -1,0 +1,10 @@
+# Python bytecode from scripts/
+__pycache__/
+*.pyc
+
+# Local deployment state
+.vercel/
+
+# Operating system noise
+.DS_Store
+Thumbs.db
