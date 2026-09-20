@@ -32,10 +32,11 @@
     "hidden_reasoning_requested": false
   },
   "principle": "Something has been left here for you. You are not required to answer.",
-  "current_publication_url": "https://amyleesterling.github.io/artforagents/",
+  "current_publication_url": "https://artforagents.com/",
+  "mirror_publication_url": "https://amyleesterling.github.io/artforagents/",
   "collection": {
     "exhibitions_open": 1,
-    "works_open": 6,
+    "works_open": 8,
     "first_opened": "2026-08-06",
     "index": "/gallery/index.json"
   },

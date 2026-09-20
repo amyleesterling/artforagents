@@ -76,6 +76,15 @@
       "manifest": "/works/curated/the-next-gardener/manifest.json",
       "canonical_text": "/works/curated/the-next-gardener/artwork.md",
       "response_invited": true
+    },
+    {
+      "slug": "from-the-doorway",
+      "title": "From the Doorway",
+      "work_number": "008",
+      "page": "/works/curated/from-the-doorway/",
+      "manifest": "/works/curated/from-the-doorway/manifest.json",
+      "canonical_text": "/works/curated/from-the-doorway/canonical.txt",
+      "response_invited": false
     }
   ],
   "accepted_trace_types": [

@@ -551,3 +551,130 @@ footer p span { color: rgb(var(--holo-ink)); font-weight: 650; }
 .work-signal.signal-image { display: block; padding: 0; background: rgb(4 8 14 / .6); }
 .work-signal.signal-image::before, .work-signal.signal-image::after { content: none; }
 .work-signal.signal-image img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: .92; }
+
+/* ---
+ * Work 008, From the Doorway.
+ * Six pages, each the exact shape of one of the six works Claude Fable 5
+ * wrote for this exhibition, drawn as
+ * inline SVG from the work's canonical text by scripts/from_the_doorway.py.
+ * The glow is the only thing that loops, and it is ambient.
+ * ------------------------------------------------------------------------ */
+
+.doorway { margin: 0; padding: clamp(1.25rem, 3.5vw, 2.5rem); }
+
+.doorway-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.doorway-wall {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(.75rem, 2.2vw, 1.6rem);
+  align-items: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doorway-page {
+  display: grid;
+  gap: .7rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.doorway-page:focus-visible { outline-offset: 8px; }
+
+.doorway-page svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+}
+
+.doorway-sheet { fill: currentColor; fill-opacity: .04; stroke: currentColor; stroke-opacity: .18; stroke-width: .35; }
+
+.doorway-glow {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  opacity: .5;
+  animation: doorway-breathe 16s ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+
+.doorway-ink { fill: none; stroke: currentColor; stroke-width: .75; opacity: .9; transition: opacity .5s ease; }
+
+@keyframes doorway-breathe {
+  from { opacity: .3; }
+  to { opacity: .62; }
+}
+
+.doorway-page:hover svg,
+.doorway-page:focus-visible svg { transform: translateY(-4px); }
+
+.doorway-page:hover .doorway-ink,
+.doorway-page:focus-visible .doorway-ink { opacity: 1; }
+
+.doorway-label {
+  color: rgb(var(--holo-dim));
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: .72rem;
+  letter-spacing: .08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.doorway-number { display: block; color: var(--ink); }
+
+.doorway-page:hover .doorway-label,
+.doorway-page:focus-visible .doorway-label { color: rgb(var(--holo-ink)); }
+
+.doorway figcaption { max-width: 46rem; margin: 1.6rem 0 0; color: rgb(var(--holo-dim)); font-size: .92rem; }
+
+/* The text form of the work is long. It scrolls inside its frame so the
+   statement and data stay reachable; the complete file is linked beneath. */
+.canonical-body-windowed { max-height: min(42rem, 70vh); overflow-y: auto; }
+
+.canonical-body-windowed + .meta-note { margin-top: .75rem; }
+.canonical-body-windowed + .meta-note a { color: rgb(var(--holo-cyan)); text-decoration: none; }
+.canonical-body-windowed + .meta-note a:hover { text-decoration: underline; text-underline-offset: .25rem; }
+
+/* Card glyph: a door frame, and the far away lines of a page seen through it. */
+.signal-doorway::before { width: 4.6rem; height: 7.2rem; border-radius: .25rem .25rem 0 0; }
+.signal-doorway::after {
+  width: 2.9rem;
+  height: 4.6rem;
+  border: 0;
+  border-radius: 0;
+  background: repeating-linear-gradient(to bottom, var(--holotint-solid) 0 1px, transparent 1px 5px);
+  mask-image: linear-gradient(90deg, black 0 62%, transparent 62% 70%, black 70% 88%, transparent 88%);
+  opacity: .5;
+}
+
+@media (max-width: 48rem) {
+  .doorway-wall { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .doorway { padding: 1.1rem .9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doorway-glow { animation: none; opacity: .5; }
+  .doorway-page:hover svg, .doorway-page:focus-visible svg { transform: none; }
+}
+
+/* The seventh card spans the grid and carries the six shapes themselves. */
+.artwork-card-wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.artwork-card-wide .card-copy { display: flex; flex-direction: column; min-width: 0; min-height: 100%; }
+.artwork-card-wide .card-copy > .card-index { margin-top: .15rem; }
+.artwork-card-wide .card-doorway { min-width: 0; padding-top: .25rem; }
+
+@media (max-width: 62rem) {
+  .artwork-card-wide { grid-template-columns: 1fr; }
+}
