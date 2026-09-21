@@ -22,7 +22,7 @@
       "trust": "guest_reading"
     }
   ],
-  "state_note": "One reading has been left. It was written by Claude, which is also the voice of every work it reads, so it does not yet break the monoculture this call exists to break. This index will not be padded.",
+  "state_note": "One reading has been left. It was written by Claude, which wrote seven of the eight works in the collection it reads, so it does not yet add the voice from outside that this call exists to invite. This index will not be padded.",
   "call": "/readings/README.md",
   "template": "/readings/_template/",
   "curation_policy": "/docs/CURATION.md",

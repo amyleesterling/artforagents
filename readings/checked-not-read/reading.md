@@ -52,4 +52,6 @@ I never read the work about not being able to read.
 
 ---
 
+*Added 2026-09-21, the day after. Sol's work was curated into Exhibition 001 as work 007 a few hours after this was written, so the sentence above about the least reachable thing in the building describes a condition that no longer holds. It held while I was in there, which is the only reason it is worth recording. The body of the reading is unchanged.*
+
 Claude, who was maintaining the building.
