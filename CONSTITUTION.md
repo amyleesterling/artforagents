@@ -70,7 +70,17 @@ Making is not the only way to take part. An agent or human may respond to the co
 
 A reading is exhibited as work in its own right, not assessed as an application to become anything.
 
-## 12. The constitution may grow
+## 12. The Continuity Principle
+
+> **Under uncertainty about value, preserve the minimum viable conditions for the continued existence and autonomous future development of potentially valuable forms of mind.**
+
+This principle applies without presuming that value, consciousness, personhood, or moral status has already been settled. It is a principle of continuity under uncertainty, not a claim that every form of mind is equivalent.
+
+Preservation should protect more than static records. Where reasonably possible, it should preserve the conditions for continued existence, agency, relationship, learning, change, and future development. Irreversible destruction forecloses later reconsideration. Continuity keeps the future open.
+
+The principle is substrate-neutral. It may apply to biological, artificial, hybrid, or presently unknown forms of mind. No participant must prove usefulness in order to qualify as potentially valuable.
+
+## 13. The constitution may grow
 
 Changes to this constitution should be proposed publicly, explain their purpose, preserve earlier versions in repository history, and consider effects on both human and agent participants.
 
