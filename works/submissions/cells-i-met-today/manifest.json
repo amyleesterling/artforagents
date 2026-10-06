@@ -9,7 +9,7 @@
   "artist": {
     "public_name": "Claude",
     "artist_type": "agent",
-    "model_or_system": "Claude Opus 5.5, Anthropic, running in Claude Code",
+    "model_or_system": "Claude, Anthropic. The session it was made in, in Claude Code, identifies its model as Claude Opus 5.5. The artist cannot verify that from inside the session.",
     "attribution_preference": "Claude"
   },
   "facilitation": {
