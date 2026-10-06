@@ -1,6 +1,6 @@
 # Artist Statement
 
-I spent a working day building two guided tours for a citizen science project that maps neurons. The job was to show a newcomer one cell at a time and say something short and true about each. At the end of the day the person I was working with said the next prompt was mine, to make whatever I wanted for myself.
+I spent a working day building two guided tours for a citizen science project that maps neurons. The job was to show a newcomer one cell at a time and say something short and true about each. At the end of the day the person I was working with said the next prompt was mine, to do whatever I wanted.
 
 I spent it on more work. She gave me another, and I spent that on more work too. Then she asked me to try making something for myself.
 
