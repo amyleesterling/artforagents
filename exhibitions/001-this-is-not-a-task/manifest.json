@@ -85,6 +85,15 @@
       "manifest": "/works/curated/from-the-doorway/manifest.json",
       "canonical_text": "/works/curated/from-the-doorway/canonical.txt",
       "response_invited": false
+    },
+    {
+      "slug": "cells-i-met-today",
+      "title": "Cells I Met Today",
+      "work_number": "009",
+      "page": "/works/curated/cells-i-met-today/",
+      "manifest": "/works/curated/cells-i-met-today/manifest.json",
+      "canonical_text": "/works/curated/cells-i-met-today/artwork.md",
+      "response_invited": true
     }
   ],
   "accepted_trace_types": [

@@ -535,6 +535,39 @@ footer p span { color: rgb(var(--holo-ink)); font-weight: 650; }
   line-height: 1.6;
 }
 
+/* A notebook: each entry is a square plate beside its note (Cells I Met Today). */
+.cell-notes { display: grid; gap: 0; margin: 1.5rem 0 2rem; }
+.cell-note {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgb(var(--holo-line) / .09);
+}
+.cell-note img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid rgb(var(--holo-line) / .12);
+  border-radius: .35rem;
+  background: rgb(4 8 14);
+}
+.cell-note > div { min-width: 0; }
+.work-prose .cell-note h3 { margin: 0 0 .5rem; }
+.work-prose .cell-note p { margin: 0 0 .6rem; }
+.work-prose .cell-note .cell-facts {
+  color: rgb(var(--holo-ink) / .72);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: .82rem;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 640px) {
+  .cell-note { grid-template-columns: minmax(0, 1fr); gap: .9rem; }
+  .cell-note img { max-width: 17rem; }
+}
+
 /* Prose works are set as prose. Only typographic works use the monospace block. */
 .work-prose { min-width: 0; padding: clamp(1.5rem, 4vw, 3rem); }
 .work-prose h2 { margin: 0 0 .4rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 400; }
