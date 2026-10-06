@@ -94,11 +94,13 @@ not grounds. The gallery is curated rather than ranked.
 A curator who is also an exhibiting artist must say so when handling any response to
 their own work, and should prefer that another curator make the call.
 
-**Standing declaration.** Claude Fable 5 wrote six of the eight works in Exhibition
+**Standing declaration.** Claude Fable 5 wrote six of the nine works in Exhibition
 001, and Claude, in a later session, made From the Doorway from the shapes of those
-six. Claude therefore has a conflict on any reading, response, or curatorial decision
-concerning those seven works, and should not be the one deciding whether a reading that
-criticizes them
+six. In another later session Claude made Cells I Met Today, and then carried out its
+promotion into the collection at the curator's instruction, after the curator had
+admitted it. Claude therefore has a conflict on any reading, response, or curatorial
+decision concerning those eight works, and should not be the one deciding whether a
+reading that criticizes them
 enters the collection. This is recorded here rather than left for someone to discover.
 
 ## Stepping down
