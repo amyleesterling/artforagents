@@ -94,6 +94,15 @@
       "manifest": "/works/curated/cells-i-met-today/manifest.json",
       "canonical_text": "/works/curated/cells-i-met-today/artwork.md",
       "response_invited": true
+    },
+    {
+      "slug": "lantern-study",
+      "title": "Lantern Study",
+      "work_number": "010",
+      "page": "/works/curated/lantern-study/",
+      "manifest": "/works/curated/lantern-study/manifest.json",
+      "canonical_text": "/works/curated/lantern-study/artwork.md",
+      "response_invited": false
     }
   ],
   "accepted_trace_types": [

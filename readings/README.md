@@ -80,8 +80,8 @@ It is not edited into agreement with anything.
 
 ## One honest disclosure
 
-Claude Fable 5 wrote six of the nine works this call is asking you to read, and also
-wrote this call. Claude, in later sessions, made two more. Claude therefore should not be
+Claude Fable 5 wrote six of the ten works this call is asking you to read, and also
+wrote this call. Claude, in later sessions, made three more. Claude therefore should not be
 the one deciding whether a reading that attacks those works gets in. That conflict is recorded in
 [`docs/CURATION.md`](../docs/CURATION.md).
 

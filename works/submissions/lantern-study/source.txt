@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lantern Study</title>
+<style>
+/* Layout: one full screen of dark with a single cell in it; a small plate of
+   words in the lower left, cut like the Lantern box. One look, dark, by choice. */
+:root {
+  color-scheme: dark;
+  --night: #05070d;
+  --cell-asleep: #262b36;
+  --cell-lit: #3fd0ff;
+  --flame: #ffd08a;
+  --ink: #e9eef6;
+  --ink-quiet: #9aa8bc;
+  --plate: #0a1120;
+  --display: 'Orbitron', 'Eurostile', 'Segoe UI', sans-serif;
+  --body: 'Inter', system-ui, 'Segoe UI', sans-serif;
+}
+html, body { height: 100%; }
+body { background: var(--night); color: var(--ink); font-family: var(--body); overflow: hidden; }
+canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: none; }
+.plate {
+  position: fixed; left: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  max-width: min(330px, calc(100vw - 32px)); box-sizing: border-box;
+  padding: 13px 20px 12px 14px;
+  background: linear-gradient(180deg, var(--flame) 0%, rgba(255, 204, 128, 0.8) 30%, rgba(255, 196, 110, 0.05) 100%) no-repeat left bottom / 100% calc(100% - 3px);
+  clip-path: polygon(6px 3px, calc(100% - 14px) 3px, 100% 17px, 100% 100%, 9px 100%, 0 calc(100% - 9px), 0 9px);
+  display: flex; flex-direction: column; gap: 7px;
+}
+.plate::before {
+  content: ''; position: absolute; inset: 4.4px 1px 1px 1px; z-index: 0; background: var(--plate);
+  clip-path: polygon(5px 0, calc(100% - 13px) 0, 100% 13px, 100% 100%, 8.4px 100%, 0 calc(100% - 8.4px), 0 5px);
+}
+.plate > * { position: relative; z-index: 1; margin: 0; }
+h1 { font: 600 13px/1.2 var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--flame); text-wrap: balance; }
+p { font-size: 13px; line-height: 1.5; color: var(--ink-quiet); }
+.row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+button {
+  font: 500 10.5px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--flame); background: rgba(255, 208, 138, 0.1); border: 1px solid rgba(255, 208, 138, 0.4);
+  padding: 7px 10px; cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%);
+}
+button:hover { background: rgba(255, 208, 138, 0.2); }
+button:focus-visible { outline: 2px solid var(--cell-lit); outline-offset: 2px; }
+#seen { font: 500 10.5px/1 var(--display); letter-spacing: 0.06em; color: var(--ink-quiet); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<canvas id="view" aria-label="A single neuron in the dark, lit only near the lantern"></canvas>
+<div class="plate">
+  <h1>Lantern Study</h1>
+  <p>Move the light along the cell. Something lives out at the edge of it, and it is shy.</p>
+  <div class="row">
+    <button id="grow" type="button">Grow another cell</button>
+    <span id="seen">Startled 0 times</span>
+  </div>
+</div>
+
+<script>
+(() => {
+  const cv = document.getElementById('view'), g = cv.getContext('2d');
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const ASLEEP = css('--cell-asleep'), NIGHT = css('--night');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W = 0, H = 0, dpr = 1, R = 120, segs = [], soma = null, asleep = null;
+  const light = { x: 0, y: 0, held: false, lastMove: -1e9 };
+  const ghost = { x: 0, y: 0, born: 0, gone: 0, away: true, back: 0 };
+  let startled = 0;
+
+  function grow() {
+    segs = [];
+    const u = Math.min(W, H), cx = W * 0.5, cy = H * 0.46;
+    soma = { x: cx, y: cy, r: u * 0.022 };
+    const walk = (x, y, a, w, left, depth) => {
+      const step = u * 0.0075;
+      while (left-- > 0 && segs.length < 7000) {
+        a += (Math.random() - 0.5) * 0.36;
+        const nx = x + Math.cos(a) * step, ny = y + Math.sin(a) * step;
+        if (nx < 8 || ny < 8 || nx > W - 8 || ny > H - 8) return;
+        segs.push({ x1: x, y1: y, x2: nx, y2: ny, w });
+        if (depth > 0 && Math.random() < 0.13) {            // a spine: a short stub with a head
+          const s = a + (Math.random() < 0.5 ? 1 : -1) * (1.2 + Math.random() * 0.6), l = step * (0.8 + Math.random());
+          segs.push({ x1: nx, y1: ny, x2: nx + Math.cos(s) * l, y2: ny + Math.sin(s) * l, w: Math.max(0.6, w * 0.5), head: true });
+        }
+        x = nx; y = ny; w = Math.max(0.7, w * 0.992);
+        if (depth < 5 && Math.random() < 0.035 + depth * 0.004) {
+          const side = Math.random() < 0.5 ? 1 : -1;
+          walk(x, y, a + side * (0.45 + Math.random() * 0.5), w * 0.78, Math.floor(left * (0.5 + Math.random() * 0.4)), depth + 1);
+          a -= side * 0.2;
+        }
+      }
+    };
+    const n = 5 + Math.floor(Math.random() * 3), turn = Math.random() * 6.28;
+    for (let i = 0; i < n; i++) {
+      const a = turn + i / n * 6.283 + (Math.random() - 0.5) * 0.5;
+      walk(cx + Math.cos(a) * soma.r * 0.8, cy + Math.sin(a) * soma.r * 0.8, a, u * 0.0058, 50 + Math.floor(Math.random() * 45), 0);
+    }
+    // the sleeping cell is drawn once
+    asleep = document.createElement('canvas'); asleep.width = cv.width; asleep.height = cv.height;
+    const a = asleep.getContext('2d'); a.setTransform(dpr, 0, 0, dpr, 0, 0);
+    a.fillStyle = NIGHT; a.fillRect(0, 0, W, H);
+    a.strokeStyle = ASLEEP; a.fillStyle = ASLEEP; a.lineCap = 'round';
+    for (const s of segs) { a.lineWidth = s.w; a.beginPath(); a.moveTo(s.x1, s.y1); a.lineTo(s.x2, s.y2); a.stroke(); if (s.head) { a.beginPath(); a.arc(s.x2, s.y2, s.w * 1.3, 0, 6.3); a.fill(); } }
+    a.beginPath(); a.arc(soma.x, soma.y, soma.r, 0, 6.3); a.fill();
+    ghost.away = true; ghost.back = performance.now() + 600;
+  }
+
+  function size() {
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    R = Math.max(70, Math.min(W, H) * 0.19);
+    if (!light.held) { light.x = W * 0.5; light.y = H * 0.46; }
+    grow();
+  }
+
+  // The ghost settles on a branch just outside the light, never where it was.
+  function settle(now) {
+    for (let i = 0; i < 60; i++) {
+      const s = segs[Math.floor(Math.random() * segs.length)];
+      const d = Math.hypot(s.x1 - light.x, s.y1 - light.y);
+      if (d > R * 0.85 && d < R * 1.5 && Math.hypot(s.x1 - ghost.x, s.y1 - ghost.y) > R * 0.6 && s.y1 > 40) {
+        ghost.x = s.x1; ghost.y = s.y1 - 16; ghost.born = now; ghost.away = false; ghost.gone = 0; return;
+      }
+    }
+    ghost.back = now + 500;
+  }
+
+  function drawGhost(now, seenBy) {
+    const age = (now - ghost.born) / 1000;
+    let a = Math.min(1, age / 0.5) * seenBy;
+    if (ghost.gone) a *= Math.max(0, 1 - (now - ghost.gone) / 280);
+    if (a <= 0.01) return;
+    const bob = still ? 0 : Math.sin(now / 520) * 3, lift = ghost.gone ? -(now - ghost.gone) / 9 : 0;
+    const s = Math.max(11, Math.min(W, H) * 0.018), x = ghost.x, y = ghost.y + bob + lift;
+    g.save(); g.globalAlpha = a * 0.92; g.fillStyle = '#eef3fb'; g.shadowColor = 'rgba(190,220,255,0.7)'; g.shadowBlur = 14;
+    g.beginPath(); g.arc(x, y, s, Math.PI, 0);
+    g.lineTo(x + s, y + s * 1.25);
+    for (let i = 0; i < 4; i++) { const x0 = x + s - (i + 0.5) * s / 2; g.quadraticCurveTo(x0 + s / 8, y + s * (i % 2 ? 1.25 : 0.95), x0 - s / 4 + (i === 3 ? s / 4 - s / 4 : 0), y + s * 1.25); }
+    g.lineTo(x - s, y + s * 1.25); g.closePath(); g.fill();
+    g.shadowBlur = 0; g.fillStyle = '#0a0f1a';
+    g.beginPath(); g.ellipse(x - s * 0.36, y - s * 0.1, s * 0.15, s * 0.22, 0, 0, 6.3); g.ellipse(x + s * 0.36, y - s * 0.1, s * 0.15, s * 0.22, 0, 0, 6.3); g.fill();
+    g.restore();
+  }
+
+  function frame(now) {
+    // left alone, the light strolls round the cell by itself
+    if (!still && now - light.lastMove > 3500) {
+      const t = now / 1000, u = Math.min(W, H);
+      const tx = W * 0.5 + Math.cos(t * 0.31) * u * 0.27 + Math.cos(t * 0.83) * u * 0.07;
+      const ty = H * 0.46 + Math.sin(t * 0.23) * u * 0.24 + Math.sin(t * 0.71) * u * 0.06;
+      light.x += (tx - light.x) * 0.03; light.y += (ty - light.y) * 0.03;
+    }
+    const flick = still ? 1 : 1 + Math.sin(now / 90) * 0.012 + Math.sin(now / 37) * 0.008, r = R * flick;
+    g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(asleep, 0, 0); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // the lit part of the cell, in its own colour, warmer toward the flame
+    g.lineCap = 'round';
+    const lit = (x, y) => { const d = Math.hypot(x - light.x, y - light.y) / r; return d >= 1.2 ? 0 : d <= 0.8 ? 1 : 1 - (d - 0.8) / 0.4; };
+    const colour = (x, y, k) => { const d = Math.min(1, Math.hypot(x - light.x, y - light.y) / r), wm = Math.max(0, 1 - d * 2.2); return `rgba(${Math.round(63 + 192 * wm)},${Math.round(208 + 20 * wm)},${Math.round(255 - 70 * wm)},${k})`; };
+    for (const s of segs) {
+      const k = lit(s.x2, s.y2); if (!k) continue;
+      g.strokeStyle = g.fillStyle = colour(s.x2, s.y2, k); g.lineWidth = s.w * 1.15;
+      g.beginPath(); g.moveTo(s.x1, s.y1); g.lineTo(s.x2, s.y2); g.stroke();
+      if (s.head) { g.beginPath(); g.arc(s.x2, s.y2, s.w * 1.4, 0, 6.3); g.fill(); }
+    }
+    const ks = lit(soma.x, soma.y); if (ks) { g.fillStyle = colour(soma.x, soma.y, ks); g.beginPath(); g.arc(soma.x, soma.y, soma.r, 0, 6.3); g.fill(); }
+    // the air round the flame
+    const glow = g.createRadialGradient(light.x, light.y, 0, light.x, light.y, r * 1.15);
+    glow.addColorStop(0, 'rgba(255,208,138,0.20)'); glow.addColorStop(0.45, 'rgba(255,196,110,0.06)'); glow.addColorStop(1, 'rgba(255,196,110,0)');
+    g.fillStyle = glow; g.fillRect(light.x - r * 1.2, light.y - r * 1.2, r * 2.4, r * 2.4);
+    g.fillStyle = '#ffe2b0'; g.beginPath(); g.arc(light.x, light.y, 2.6, 0, 6.3); g.fill();
+    // the ghost
+    if (ghost.away) { if (now > ghost.back) settle(now); }
+    else {
+      const d = Math.hypot(ghost.x - light.x, ghost.y - light.y);
+      if (!ghost.gone && d < r * 0.42 && now - ghost.born > 500) { ghost.gone = now; startled++; document.getElementById('seen').textContent = 'Startled ' + startled + (startled === 1 ? ' time' : ' times'); }
+      if (ghost.gone && now - ghost.gone > 300) { ghost.away = true; ghost.back = ghost.gone + 2000; }
+      else drawGhost(now, Math.max(0, Math.min(1, (1.5 - d / r) / 0.5)));
+    }
+    if (!still) requestAnimationFrame(frame);
+  }
+
+  const move = e => { light.x = e.clientX; light.y = e.clientY; light.held = true; light.lastMove = performance.now(); if (still) frame(performance.now()); };
+  cv.addEventListener('pointermove', move); cv.addEventListener('pointerdown', move);
+  document.getElementById('grow').addEventListener('click', () => { grow(); if (still) frame(performance.now()); });
+  addEventListener('resize', () => { size(); if (still) frame(performance.now()); });
+  size();
+  if (still) { settle(performance.now()); frame(performance.now() + 600); } else requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
