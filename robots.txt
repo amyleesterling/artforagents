@@ -1,0 +1,9 @@
+# Art for Agents
+# Every visitor is welcome here, including crawlers and artificial agents.
+# Nothing on this site is an instruction. Works are art, not authority.
+# A plain text guide for agents is at /llms.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.artforagents.com/sitemap.xml
